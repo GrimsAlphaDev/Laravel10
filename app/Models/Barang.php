@@ -11,6 +11,8 @@ class Barang extends Model
 
     protected $table = 'barang';
 
+    protected $guarded = [];
+
     public function jenis()
     {
         return $this->belongsTo(JenisBarang::class, 'id_jenis');

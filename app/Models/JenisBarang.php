@@ -16,5 +16,7 @@ class JenisBarang extends Model
         return $this->hasMany(Barang::class, 'id_jenis');
     }
 
+    protected $guarded = [];
+
 
 }

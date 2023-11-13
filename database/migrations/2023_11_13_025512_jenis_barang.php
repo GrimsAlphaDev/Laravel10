@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('jenis_barang', function (Blueprint $table) {
             $table->id();
             $table->string('nama_jenis', 50);
+            $table->string('status')->default('aktif');
             $table->timestamps();
         });
     }

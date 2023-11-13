@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('id_jenis')->unsigned();
             $table->integer('jumlah_stok');
             $table->decimal('harga_satuan', 10, 2);
+            $table->string('status')->default('aktif');
             $table->timestamps();
             $table->foreign('id_jenis')->references('id')->on('jenis_barang');
         });
