@@ -16,19 +16,34 @@
                         <th>Jenis Barang</th>
                         <th>Jumlah Stok</th>
                         <th>Harga Satuan</th>
+                        <th>Sub Total</th>
                         <th>Updated At</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($barangs as $barang)
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $barang['nama_barang'] }}</td>
-                        <td>JNS</td>
-                        <td>{{ $barang['jumlah_stok'] }}</td>
-                        <td>{{ $barang['harga_satuan'] }}</td>
-                        <td>{{ $barang['updated_at'] }}</td>
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $barang['nama_barang'] }}</td>
+                            <td>{{ $barangs[0]->jenis->nama_jenis }}</td>
+                            <td>{{ $barang['jumlah_stok'] }}</td>
+                            <td>Rp. {{ number_format($barang['harga_satuan'], 2, ',', '.') }}</td>
+                            <td class="text-end">Rp. {{ number_format($barang['jumlah_stok'] * $barang['harga_satuan'], 2, ',', '.') }}</td>
+                            <td>{{ $barang['updated_at'] }}</td>
+                        </tr>
                     @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="5" class="text-center fw-bold">TOTAL ASET</th>
+                        <th colspan="2">
+                            {{ 
+                                // currency
+                                'Rp. ' . number_format($totalAsset, 2, ',', '.')
+                                }}
+                        </th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>

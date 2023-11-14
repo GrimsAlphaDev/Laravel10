@@ -23,6 +23,13 @@ class JenisBarangController extends Controller
             'jenis' => 'required'
         ]);
 
+        // find jenis barang
+        $findJenis = JenisBarang::where('nama_jenis', $request->jenis)->first();
+
+        if($findJenis){
+            return redirect()->back()->with('error', 'Jenis barang sudah ada');
+        }
+
         $insertJenis = JenisBarang::create([
             'nama_jenis' => $request->jenis
         ]);
@@ -38,6 +45,13 @@ class JenisBarangController extends Controller
         $request->validate([
             'jenis' => 'required'
         ]);
+
+        // find jenis barang
+        $findJenis = JenisBarang::where('nama_jenis', $request->jenis)->first();
+
+        if($findJenis){
+            return redirect()->back()->with('error', 'Jenis barang sudah ada');
+        }
 
         $updateJenis = JenisBarang::where('id', $id)->update([
             'nama_jenis' => $request->jenis

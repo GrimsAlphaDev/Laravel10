@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('kode_transaksi', 200)->unique();
             $table->string('jenis_transaksi', 10)->check('jenis_transaksi IN (?, ?)', ['Pembelian', 'Penjualan']);
             $table->decimal('biaya_jasa', 10, 2)->nullable();
+            $table->text('catatan')->nullable();
             $table->timestamps();
         });
     }
